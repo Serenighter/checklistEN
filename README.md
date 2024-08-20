@@ -5,9 +5,6 @@
 ---
 checklist is a very simple program that helps you create a checklist.
 The application was written in java with javafx library. I included css style sheet to make the application look this much nicer.
-When you select a user you can't modify the cell with a user, you have to delete the row and create a new one with the user you want. It's this way on purpose.
-Data in number and notes can be freely modified.
-Checkboxes in the second column are hard-coded to be there.
 ---
 # Installation
 > To install the application simply download the .zip folder and extract it.
