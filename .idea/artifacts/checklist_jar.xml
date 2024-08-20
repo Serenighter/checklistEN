@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact name="checklist:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/checklist_jar</output-path>
+    <root id="root">
+      <element id="archive" name="checklist.jar">
+        <element id="module-output" name="checklist" />
+      </element>
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:22" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:22" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:22" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:win:22" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:22" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:win:22" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:22" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:win:22" />
+    </root>
+  </artifact>
+</component>

@@ -12,7 +12,6 @@ public class FileRead {
     public static void saveToFile(TableView<Task> tableView, String filePath) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
 
-            // Write the header row
             for (int i = 0; i < tableView.getColumns().size(); i++) {
                 writer.write(tableView.getColumns().get(i).getText());
                 if (i < tableView.getColumns().size() - 1) {
@@ -21,7 +20,6 @@ public class FileRead {
             }
             writer.newLine();
 
-            // Write data rows
             for (Task task : tableView.getItems()) {
                 for (int i = 0; i < tableView.getColumns().size(); i++) {
                     Object cellValue = tableView.getColumns().get(i).getCellData(task);
@@ -66,6 +64,6 @@ public class FileRead {
                 e.printStackTrace();
             }
         }
-        public static String getUserForTask(Task task) { return userMap.getOrDefault(task,"");}
+        public static String getUserForTask(Task task) { return userMap.getOrDefault(task,"");} //useless for now
     }
 

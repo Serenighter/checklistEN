@@ -24,12 +24,12 @@ public class InputForm {
         powerGrid.setVgap(8);
         powerGrid.setHgap(10);
         powerGrid.setAlignment(Pos.CENTER);
-        //nr
+
         Label nrLabel = new Label("Number: ");
         GridPane.setConstraints(nrLabel,0,0);
         TextField nrInput = new TextField();
         GridPane.setConstraints(nrInput,1,0);
-        //uwagi
+
         Label notesLabel = new Label("Notes: ");
         GridPane.setConstraints(notesLabel, 0, 1);
         TextField notesInput = new TextField();
@@ -38,7 +38,7 @@ public class InputForm {
         CheckBox checkboxOption = new CheckBox("Mark as done?");
         GridPane.setConstraints(checkboxOption,1,2);
         boolean[] checkboxesColumn = {false, true, false};
-        //przycisk!:>
+
         Button submitter = new Button("Add the data");
         GridPane.setConstraints(submitter,1,3);
         submitter.setOnAction(e -> { String nr = nrInput.getText(); String notes = notesInput.getText(); boolean check = checkboxOption.isSelected();
@@ -49,10 +49,10 @@ public class InputForm {
         powerGrid.getChildren().addAll(nrLabel, nrInput, notesLabel, notesInput, submitter, checkboxOption);
 
         Scene scene = new Scene(powerGrid, 320, 180);
+        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         popup.setScene(scene);
         popup.showAndWait();
 
         return task;
-        //return new Task(inputName.getText(), inputCheckbox.isSelected(), inputName.getText());
     }
 }

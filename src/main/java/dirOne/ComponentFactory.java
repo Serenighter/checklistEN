@@ -1,11 +1,17 @@
 package dirOne;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.File;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import javafx.collections.ObservableList;
 import javafx.beans.property.BooleanProperty;
@@ -14,6 +20,7 @@ import javafx.beans.value.ObservableValue;
 
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 
 import static dirOne.FileRead.loadFromFile;
 import static dirOne.FileRead.saveToFile;
@@ -29,7 +36,7 @@ public class ComponentFactory {
         HBox hbox = new HBox();
         hbox.setPadding(new Insets(15, 12, 15, 12));
         hbox.setSpacing(10);
-        hbox.setStyle("-fx-background-color: #900009;");
+        hbox.setStyle("-fx-background-color: #666666;");
 
         ComboBox<String> userSelection = new ComboBox<>(users);
         userSelection.setPromptText("Choose a user");
@@ -64,10 +71,26 @@ public class ComponentFactory {
                 tableView.getItems().remove(selectedTask);
             }
         });
+        Text dateLabel = new Text("Date: " + LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        Text timeLabel = new Text("Time: " + LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            LocalTime now = LocalTime.now();
+            dateLabel.setText("Date: " + LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+            timeLabel.setText("Time: " + now.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+        }));
+        dateLabel.getStyleClass().add("date-label");
+        timeLabel.getStyleClass().add("time-label");
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
+        HBox.setMargin(dateLabel, new Insets(0, 0, 0, 200));
+        HBox.setMargin(timeLabel, new Insets(0, 0, 0, 5));
+
         hbox.getChildren().add(loadButton);
         hbox.getChildren().add(saveButton);
         hbox.getChildren().add(deleteButton);
         hbox.getChildren().add(userSelection);
+        hbox.getChildren().addAll(dateLabel, timeLabel);
 
         return hbox;
     }
